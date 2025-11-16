@@ -1,0 +1,9 @@
+shop
+admin
+login
+uploads
+images
+secret
+backup
+config
+robots.txt
