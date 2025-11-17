@@ -1,5 +1,12 @@
 import requests
 import os
+from colorama import Fore, Back, Style
+
+# --- COLORI ---
+green = Fore.GREEN
+red = Fore.RED
+reset = Fore.WHITE
+
 
 def clear():
     if os.name == "posix":
@@ -26,9 +33,9 @@ def dirFinder(url, wordlist):
         try:
             response = requests.get(full_url, timeout=5)
             if response.status_code == 200:
-                print(f"\n[*] Directory found: {full_url}")
+                print(green + f"\n[*] Directory found: {full_url}")
             elif response.status_code == 403:
-                print(f"[!] Access denied: {full_url}")
+                print(red + f"[!] Access denied: {full_url}")
             elif response.status_code == 404:
                 pass
             else:
@@ -60,12 +67,11 @@ def main():
             site = input("\nURL: ").strip()
             wd = input("Wordlist: ")
             dirFinder(site, wd)
-            print("\n[STOP] Scan completed!")
+            print(reset + "\n[STOP] Scan completed!")
             input("Press any key to return to home...")
         
         elif opt == 2:
-            break
-        
+            break                 
         else:
             print("Please select a valid option!")
             input("...")
